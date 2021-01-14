@@ -7,7 +7,7 @@ $type = 1; // 0 = USD Price | 1 = THB Price
 $key1 = "5d56876a070feef0811c6fd252e714dd";// currencylayer.com
 $key2 = "2d9c96bce0dc65d4db62";// currconv.com
 ///////////////////////////////////////////////////////////////////////
-
+$get_use = addslashes(trim($_GET['v']));
 // BITCOIN API
 $content = file_get_contents("https://api.bitkub.com/api/market/ticker?sym=USD_BTC"); // ดึงข้อมูล
 $obj = json_decode($content); //decode json data
@@ -24,12 +24,22 @@ if($usd_server == 0){
 
 
 $thbbitcoin = $obj->THB_BTC->last; // BTC
-if($type == 0){
+
+//กรณีเรียกใช้ ?v= เพื่อเปลี่ยนผลลัพธ์
+if($get_use == null){
+	// ระบบแสดงผลตาม config
+	if($type == 0){
 	$cookie = $thbbitcoin;
-}else if($type == 1){
+	}else if($type == 1){
 	$cookie = $thbbitcoin / $usd;
+	}
+// แสดงผลตาม key ผ่านลิ้ง ?v=usd หรือ ?v=thb
+}else if($get_use == "usd"){
+	$cookie = $thbbitcoin / $usd;
+}else if($get_use == "thb"){
+	$cookie = $thbbitcoin;
 }
-$cookie = $thbbitcoin / $usd;
+// OUTPUT
 echo $cookie; // แสดงผล ราคา BTC ปัจจุบัน (THB)
 
 ?>
