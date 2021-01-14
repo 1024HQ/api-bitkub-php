@@ -23,8 +23,8 @@ market : THB_BTC , THB_ETH , THB_DOGE , THB_BCH , THB_USDT , THB_XRP , THB_LTC ,
 <hr>
 gui 0 = เปิด GUI Mode | gui 1 = json output | gui 2 = Array output
 <hr>
-ตัวอย่าง type 1: <a href='https://hi.in.th/api/api.php?type=1&market=THB_BTC&gui=0'>https://hi.in.th/api/api.php?type=1&market=THB_BTC&gui=0</a><br>
-ตัวอย่าง type 2: <a href='https://hi.in.th/api/api.php?type=2&market=THB_BTC&gui=1&limit=10'>https://hi.in.th/api/api.php?type=2&market=THB_BTC&gui=1&limit=10</a><br>
+ตัวอย่าง type 1: <a href='https://hi.in.th/api/api?type=1&market=THB_BTC&gui=0'>https://hi.in.th/api/api?type=1&market=THB_BTC&gui=0</a><br>
+ตัวอย่าง type 2: <a href='https://hi.in.th/api/api?type=2&market=THB_BTC&gui=1&limit=10'>https://hi.in.th/api/api?type=2&market=THB_BTC&gui=1&limit=10</a><br>
 <hr>";
 /////////////////
 
