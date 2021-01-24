@@ -2,6 +2,7 @@
  pre-test | https://hi.in.th/api/bitcoin-bitkub <br>
  usd price | https://hi.in.th/api/bitcoin-bitkub?v=usd <br>
  thb price | https://hi.in.th/api/bitcoin-bitkub?v=thb <br>
+ 1 USD covert to THB | https://hi.in.th/api/bitcoin-bitkub?v=currency
 # api-sample full
  pre-test | https://hi.in.th/api/api <br>
  sample | https://hi.in.th/api/api?type=1&market=THB_BTC&gui=0 <br>
