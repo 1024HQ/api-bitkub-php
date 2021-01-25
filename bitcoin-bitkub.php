@@ -1,13 +1,14 @@
 <?php 
 // CONFIG //
-$usd_server = 1; //  0 = free.currconv.com | 1 = api.currencylayer.com
+$usd_server = 1; //  0 = free.currconv.com | 1 = api.currencylayer.com www.currencyconverterapi.com
 $type = 1; // 0 = USD Price | 1 = THB Price
 // API-KEY //
 // สามารถไปสมัคร ใส่ API ของตัวเองได้ เพราะ มันจำกัดการใช้งานแล้วแต่เว็บผู้ให้บริการ
 $key1 = "5d56876a070feef0811c6fd252e714dd";// currencylayer.com
-$key2 = "2d9c96bce0dc65d4db62";// currconv.com
+$key2 = "f0bac32223bf440f2600";// currconv.com
 ///////////////////////////////////////////////////////////////////////
-$get_use = addslashes(trim($_GET['v']));
+$get_use = addslashes(trim($_GET['v'])); // get key 1
+$get_format = addslashes(trim($_GET['f'])); // get key 2
 // BITCOIN API
 $content = file_get_contents("https://api.bitkub.com/api/market/ticker?sym=USD_BTC"); // ดึงข้อมูล
 $obj = json_decode($content); //decode json data
@@ -35,9 +36,23 @@ if($get_use == null){
 	}
 // แสดงผลตาม key ผ่านลิ้ง ?v=usd หรือ ?v=thb
 }else if($get_use == "usd"){
-	$cookie = $thbbitcoin / $usd;
+	if ($get_format == 1){
+		$cookie = number_format($thbbitcoin / $usd,2,".","");
+	}else{
+		$cookie = $thbbitcoin / $usd;
+	}
 }else if($get_use == "thb"){
-	$cookie = $thbbitcoin;
+	if ($get_format == 1){
+		$cookie = number_format($thbbitcoin,2,".","");
+	}else{
+		$cookie = $thbbitcoin;	
+	}
+}else if($get_use == "currency"){
+	if ($get_format == 1){
+		$cookie = number_format($usd,2,".","");
+	}else{
+			$cookie = $usd;
+	}
 }
 // OUTPUT
 echo $cookie; // แสดงผล ราคา BTC ปัจจุบัน (THB)
